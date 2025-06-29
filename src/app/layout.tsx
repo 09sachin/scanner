@@ -15,7 +15,6 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-
 export const metadata: Metadata = {
   metadataBase: new URL('https://scanner.bitsandbots.in'),
   title: "BarCode Pro - Professional Barcode & Invoice Generator",
