@@ -1,36 +1,182 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Barcode & Invoice Generator
 
-## Getting Started
+A professional Progressive Web App (PWA) for generating barcodes, QR codes, scanning codes, and creating GST-compliant invoices.
 
-First, run the development server:
+🔗 **Live Demo**: [scanner.bitsandbots.in](https://scanner.bitsandbots.in)
 
+## ✨ Features
+
+### 🏷️ Barcode & QR Code Generator
+- **Multiple barcode formats**: CODE128, CODE39, EAN13, EAN8, UPC, ITF14, MSI, Pharmacode
+- **QR Code generation** with customizable error correction levels
+- **Template-based QR codes** for:
+  - Website URLs
+  - Contact information (vCard)
+  - WiFi network sharing
+  - Email composition (Gmail)
+  - SMS messages
+  - App Store/Play Store links
+  - Custom JSON data
+- **Customizable styling**: Colors, dimensions, display options
+- **Export functionality**: Download as PNG
+
+### 📱 Code Scanner
+- **Dual scanning modes**: Upload image or live camera scanning
+- **Multi-format support**: Both QR codes and barcodes
+- **Real-time camera scanning** with Html5-QrCode
+- **Scan history** with timestamp and copy functionality
+- **Mobile-optimized** camera interface
+
+### 🧾 Invoice Generator
+- **GST-compliant invoices** for Indian businesses
+- **Professional templates** with multiple styling options
+- **Comprehensive business & customer details**
+- **Item management** with GST calculations
+- **Automatic tax calculations** (CGST, SGST, IGST)
+- **PDF export** functionality
+- **Invoice preview** before generation
+
+### 🌐 Progressive Web App (PWA)
+- **Offline functionality** with service worker
+- **Installable** on mobile and desktop
+- **App shortcuts** for quick access to features
+- **Dark/Light theme** with system preference detection
+- **Responsive design** for all screen sizes
+
+## 🚀 Deployment
+
+This project is automatically deployed to GitHub Pages using GitHub Actions.
+
+### Live URL
+- **Production**: [scanner.bitsandbots.in](https://scanner.bitsandbots.in)
+
+### Deployment Process
+1. Push changes to the `main` branch
+2. GitHub Actions automatically builds and deploys
+3. Static files are served from GitHub Pages
+4. Custom domain (scanner.bitsandbots.in) is configured
+
+### Manual Deployment
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm run build
+# Files are exported to the 'out' directory
+# GitHub Actions handles the rest
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🛠️ Development
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Prerequisites
+- Node.js 18+ 
+- npm or yarn
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### Installation
+```bash
+# Clone the repository
+git clone <repository-url>
+cd barcode_invoice_gen
 
-## Learn More
+# Install dependencies
+npm install
 
-To learn more about Next.js, take a look at the following resources:
+# Start development server
+npm run dev
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Available Scripts
+```bash
+npm run dev          # Start development server
+npm run build        # Build for production
+npm run start        # Start production server
+npm run lint         # Run ESLint (disabled in build)
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### Tech Stack
+- **Framework**: Next.js 15 with App Router
+- **Language**: TypeScript
+- **Styling**: Tailwind CSS
+- **Barcode Generation**: JsBarcode
+- **QR Code Generation**: qrcode library
+- **Code Scanning**: Html5-QrCode, jsQR, Quagga
+- **PDF Generation**: jsPDF, html2canvas
+- **Form Handling**: React Hook Form
+- **Icons**: Lucide React
 
-## Deploy on Vercel
+## 📱 PWA Features
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### Installation
+- **Mobile**: Add to Home Screen from browser menu
+- **Desktop**: Install button in address bar (Chrome/Edge)
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### Offline Functionality
+- Core features work offline
+- Cached resources for faster loading
+- Background sync for data
+
+### App Shortcuts
+Quick access to:
+- Barcode Generator
+- Code Scanner  
+- Invoice Generator
+
+## 🎨 Theming
+
+### Dark/Light Mode
+- System preference detection
+- Manual toggle in navbar
+- Persistent user preference
+- Smooth transitions
+
+### Color Scheme
+- **Light Mode**: Clean whites and grays
+- **Dark Mode**: Deep navy blue backgrounds
+- **Accent Colors**: Blue gradient themes
+
+## 📈 Performance
+
+### Optimization
+- Static site generation (SSG)
+- Image optimization disabled for GitHub Pages
+- Service worker caching
+- Code splitting and lazy loading
+
+### Lighthouse Score
+- Performance: Optimized for static delivery
+- Accessibility: WCAG compliant
+- Best Practices: PWA standards
+- SEO: Meta tags and structured data
+
+## 🔧 Configuration
+
+### Environment Variables
+No environment variables required for basic functionality.
+
+### Customization
+- Update `manifest.json` for PWA settings
+- Modify `tailwind.config.js` for theming
+- Edit `next.config.ts` for build settings
+
+## 📄 License
+
+This project is licensed under the MIT License.
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create a feature branch
+3. Commit your changes
+4. Push to the branch
+5. Open a Pull Request
+
+## 🐛 Issues
+
+Report issues on the [GitHub Issues](https://github.com/your-username/barcode_invoice_gen/issues) page.
+
+## 📞 Support
+
+For support and questions:
+- Create an issue on GitHub
+- Visit [scanner.bitsandbots.in](https://scanner.bitsandbots.in)
+
+---
+
+**Built with ❤️ by BitsandBots**
