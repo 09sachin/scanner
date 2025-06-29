@@ -5,7 +5,7 @@ import jsQR from 'jsqr';
 // @ts-expect-error - Quagga doesn't have proper TypeScript types
 import Quagga from 'quagga';
 import { Html5Qrcode } from 'html5-qrcode';
-import { Camera, Upload, Home, Scan, X, CheckCircle, AlertCircle, RotateCcw, QrCode, BarChart3 } from 'lucide-react';
+import { Camera, Upload, Home, Scan, CheckCircle, AlertCircle, QrCode, BarChart3 } from 'lucide-react';
 import Link from 'next/link';
 
 interface ScanResult {
@@ -42,6 +42,9 @@ export function Scanner() {
   const [scanPaused, setScanPaused] = useState(false);
   const [lastScannedData, setLastScannedData] = useState<string>('');
   const [scannerReady, setScannerReady] = useState(false);
+
+  console.log('lastScannedData', lastScannedData);  
+  console.log('scanResults', scannerReady)
   
   const fileInputRef = useRef<HTMLInputElement>(null);
   const imagePreviewRef = useRef<HTMLImageElement>(null);

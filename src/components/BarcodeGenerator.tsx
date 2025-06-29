@@ -55,12 +55,12 @@ const barcodeFormats = [
   { value: 'pharmacode', label: 'Pharmacode' },
 ];
 
-const qrErrorLevels = [
-  { value: 'L', label: 'Low (~7%)', description: 'Good for clean environments' },
-  { value: 'M', label: 'Medium (~15%)', description: 'Balanced option' },
-  { value: 'Q', label: 'Quartile (~25%)', description: 'Good for noisy environments' },
-  { value: 'H', label: 'High (~30%)', description: 'Maximum error correction' },
-];
+// const qrErrorLevels = [
+//   { value: 'L', label: 'Low (~7%)', description: 'Good for clean environments' },
+//   { value: 'M', label: 'Medium (~15%)', description: 'Balanced option' },
+//   { value: 'Q', label: 'Quartile (~25%)', description: 'Good for noisy environments' },
+//   { value: 'H', label: 'High (~30%)', description: 'Maximum error correction' },
+// ];
 
 const QR_TEMPLATES: QRTemplate[] = [
   {
@@ -215,6 +215,7 @@ export function BarcodeGenerator() {
   const [templateData, setTemplateData] = useState<Record<string, string>>({});
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const barcodeRef = useRef<HTMLDivElement>(null);
+  console.log('debugInfo', debugInfo);
 
   const { register, handleSubmit, watch, formState: { errors }, reset, getValues, setValue } = useForm<CodeFormData>({
     defaultValues: {
@@ -472,70 +473,6 @@ export function BarcodeGenerator() {
     }
   };
 
-  const testBasicGeneration = async () => {
-    console.log('Testing basic code generation...');
-    console.log('Canvas ref:', !!canvasRef.current);
-    console.log('Canvas ready:', canvasReady);
-    
-    // Wait for canvas if not ready
-    if (!canvasRef.current) {
-      console.log('Waiting for canvas...');
-      await new Promise(resolve => setTimeout(resolve, 200));
-    }
-    
-    if (canvasRef.current) {
-      try {
-        console.log('Attempting basic barcode generation...');
-        JsBarcode(canvasRef.current, "Hello World", {
-          format: "CODE128",
-          width: 2,
-          height: 100,
-          displayValue: true
-        });
-        console.log('Basic test successful');
-        setHasGenerated(true);
-        setGeneratedCode('Hello World');
-        setGeneratedType('barcode');
-        setDebugInfo('Basic test successful');
-        setError('');
-      } catch (error: Error | unknown) {
-        console.error('Basic test failed:', error);
-        setError(`Basic test failed: ${error instanceof Error ? error.message : 'Unknown error'}`);
-      }
-    } else {
-      setError('Canvas still not available for basic test');
-    }
-  };
-
-  const testQRGeneration = async () => {
-    console.log('Testing QR code generation...');
-    
-    if (!canvasRef.current) {
-      await new Promise(resolve => setTimeout(resolve, 200));
-    }
-    
-    if (canvasRef.current) {
-      try {
-        console.log('Attempting QR code generation...');
-        await QRCode.toCanvas(canvasRef.current, "Hello QR World", {
-          width: 200,
-          margin: 4,
-          errorCorrectionLevel: 'M'
-        });
-        console.log('QR test successful');
-        setHasGenerated(true);
-        setGeneratedCode('Hello QR World');
-        setGeneratedType('qrcode');
-        setDebugInfo('QR test successful');
-        setError('');
-      } catch (error: Error | unknown) {
-        console.error('QR test failed:', error);
-        setError(`QR test failed: ${error instanceof Error ? error.message : 'Unknown error'}`);
-      }
-    } else {
-      setError('Canvas still not available for QR test');
-    }
-  };
 
   const onSubmit = async (data: CodeFormData) => {
     console.log('Form submitted with data:', data);

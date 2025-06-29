@@ -10,7 +10,6 @@ import {
   Home, 
   FileText, 
   Plus, 
-  Minus, 
   User, 
   Save,
   Eye,
@@ -113,17 +112,17 @@ export function InvoiceGenerator() {
   const watchedItems = watch('items');
   const watchedTemplate = watch('template');
 
-  const calculateItemAmount = (index: number) => {
-    const quantity = watchedItems[index]?.quantity || 0;
-    const rate = watchedItems[index]?.rate || 0;
-    const gstRate = watchedItems[index]?.gstRate || 0;
+//   const calculateItemAmount = (index: number) => {
+//     const quantity = watchedItems[index]?.quantity || 0;
+//     const rate = watchedItems[index]?.rate || 0;
+//     const gstRate = watchedItems[index]?.gstRate || 0;
     
-    const amount = quantity * rate;
-    const gstAmount = (amount * gstRate) / 100;
+//     const amount = quantity * rate;
+//     const gstAmount = (amount * gstRate) / 100;
     
-    setValue(`items.${index}.amount`, amount);
-    setValue(`items.${index}.gstAmount`, gstAmount);
-  };
+//     setValue(`items.${index}.amount`, amount);
+//     setValue(`items.${index}.gstAmount`, gstAmount);
+//   };
 
   const getTotalAmount = () => {
     return watchedItems.reduce((total, item) => total + (item.amount || 0), 0);
@@ -137,10 +136,10 @@ export function InvoiceGenerator() {
     return getTotalAmount() + getTotalGst();
   };
 
-  const validateGST = (gst: string) => {
-    const gstRegex = /^[0-9]{2}[A-Z]{5}[0-9]{4}[A-Z]{1}[1-9A-Z]{1}Z[0-9A-Z]{1}$/;
-    return gstRegex.test(gst);
-  };
+//   const validateGST = (gst: string) => {
+//     const gstRegex = /^[0-9]{2}[A-Z]{5}[0-9]{4}[A-Z]{1}[1-9A-Z]{1}Z[0-9A-Z]{1}$/;
+//     return gstRegex.test(gst);
+//   };
 
   const exportToPDF = async () => {
     if (!invoiceRef.current) return;
